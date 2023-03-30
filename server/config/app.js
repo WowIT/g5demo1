@@ -19,6 +19,7 @@ let mongoose = require('mongoose');
 let db = require('./db');
 
 // point mongoose to the db uri
+mongoose.set('strictQuery', false);
 mongoose.connect(db.uri, {useNewUrlParser: true, useUnifiedTopology: true});
 
 // Passport Config
