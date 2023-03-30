@@ -28,15 +28,7 @@
   },
   "description": "Incident management site",
   "main": "server.js",
-  "devDependencies": {
-    "@types/connect-flash": "0.0.35",
-    "@types/express": "^4.17.8",
-    "@types/express-session": "^1.17.0",
-    "@types/mongoose": "^5.7.36",
-    "@types/passport": "^1.0.4",
-    "@types/passport-local": "^1.0.33",
-    "@types/passport-local-mongoose": "^4.0.13"
-  },
+
   "repository": {
     "type": "git",
     "url": ""
