@@ -1,0 +1,254 @@
+
+ body {
+  padding-bottom: 60px;
+  font-family: "Lato", sans-serif;
+  transition: background-color .5s;
+  background-image: url("../assets/images/back.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#home {
+background: none;
+text-align: center;
+height: 200px;
+}
+
+.titleMain {
+background: none;
+text-align: center;
+height: 100px;
+color: #daa520;
+text-shadow: 3px 3px #818181;
+font-size: 130px !important;
+letter-spacing: 4px;
+}
+
+.labelList {
+  font-size: 25px;
+  color: antiquewhite;
+  text-align: left;
+}
+
+.selectList {
+  letter-spacing: 2px;
+  font-size: 18px;
+  padding-left: 54px;
+}
+
+.display-4, .display-2 {
+text-shadow: 2px 2px #818181;
+}
+
+.display-2 {
+font-size: 70px;
+}
+
+.display-3 {
+font-size: 70px;
+margin-top: -40px;
+}
+
+.display-4 {
+font-size: 45px;
+}
+
+#statusCommentError{
+  display: none;
+  color: red;
+  margin: 5px;
+}
+
+.sidenav {
+height: 100%;
+width: 0;
+position: fixed;
+z-index: 1;
+top: 0;
+left: 0;
+background-color:#111;
+overflow-x: hidden;
+transition: 0.5s;
+padding-top: 60px;
+}
+
+.sidenav a {
+padding: 8px 8px 8px 32px;
+text-decoration: none;
+font-size: 20px;
+color: #818181;
+display: block;
+transition: 0.3s;
+}
+
+.sidenav a:hover {
+color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+position: absolute;
+top: 0;
+right: 25px;
+font-size: 36px;
+margin-left: 50px;
+}
+
+#main {
+transition: margin-left .5s !important;
+}
+
+.hello_msg {
+font-size: 17.5px !important;
+margin-right: 15px !important;
+color: white !important;
+font-weight: 450 !important;
+}
+
+.main-section {
+margin: 0 auto;
+margin-top: 70px;
+padding: 0;
+}
+
+.modal-content {
+background-color: #434e5a;
+padding: 0 18px;
+border-radius: 10px;
+}
+
+.model-content-incident {
+background-color: darksalmon;
+}
+
+.model-content-update {
+background-color: darkslategray;
+}
+
+
+.user-img img {
+height: 150px;
+width: 150px;
+}
+
+.dogs {
+  border-radius: 75px;
+  border: 4px solid #1c6288;
+  opacity: 0.9;
+}
+
+.user-img {
+margin-top: -80px;
+margin-bottom: 45px;
+}
+
+.form-group {
+margin-bottom: 25px;
+}
+
+.form-group input {
+height: 42px;
+border-radius: 5px;
+border: 0;
+font-size: 18px;
+letter-spacing: 2px;
+padding-left: 54px;
+margin-top: -10px;
+}
+
+
+.fonticon
+{
+position: relative;
+}
+
+.fonticon i {
+position: absolute;
+left: 15px;
+top: 15px;
+color: gray;
+}
+
+.fonticon2
+{
+position: relative;
+}
+
+.fonticon2 i {
+position: absolute;
+left: 15px;
+top: 60px;
+color: gray;
+}
+
+
+.fonticonUpdate
+{
+position: relative;
+}
+
+.fonticonUpdate i {
+position: absolute;
+left: 15px;
+top: 60px;
+color: gray;
+}
+
+
+
+.loginButton, .registerButton, .addButton {
+background-color: #1c6288;
+font-size: 19px;
+border-radius: 5px;
+padding: 7px 14px;
+border: 1px solid #daf1ff;
+margin-bottom: 20px;
+}
+
+.cancelButton {
+font-size: 19px;
+border-radius: 5px;
+padding: 7px 14px;
+border: 1px solid #daf1ff;
+margin-bottom: 20px;
+}
+
+.googleButton {
+font-size: 16px;
+border-radius: 5px;
+padding: 6px 15px;
+border: 1px solid #daf1ff;
+}
+
+.loginButton:hover, .registerButton:hover, .addButton:hover {
+background-color: #13445e;
+border: 1px solid #daf1ff;
+}
+
+.cancelButton:hover {
+background-color: #daa520;
+border: 1px solid #daf1ff;
+}
+
+.googleButton:hover {
+border: 1px solid #daf1ff;
+}
+
+.forgot {
+padding: 5px 0 10px;
+margin-top: -10px;
+}
+
+.forgot a {
+color: #daf1ff;
+}
+
+.table {
+background-color: whitesmoke;
+}
+
+@media screen and (max-height: 450px) {
+.sidenav {padding-top: 15px;}
+.sidenav a {font-size: 18px;}
+}

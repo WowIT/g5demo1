@@ -1,0 +1,87 @@
+
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/nav_bar.ejs %>
+
+  <!-- Main content -->
+  <main class="container">
+    <div class="row">
+        <div class="col-md-offset-3">
+            <div class="jumbotron text-center titleMain">
+                <h1 class="jumbotron-heading display-3"><%= title %></h1>
+            </div><br>
+            <a href="/incident-list/add" class="btn btn-primary" role="button" style="margin-bottom: 10px; margin-top: 15px;">
+                <i class="fa fa-plus-circle"></i> Add Incident
+            </a>
+            <br>
+            <table class="table table-bordered table-striped table-hover">
+                <!-- Header row -->
+                <tr>
+                    <th class="text-center">Record Number</th>
+                    <th class="text-center">Incident Description</th>
+                    <th class="text-center">Incident Priority</th>
+                    <th class="text-center">Customer Information</th>
+                    <th class="text-center" style="width: 15%;">Status</th>
+                    <th class="text-center">Incident Narrative</th>
+                    <th class="text-center"></th>
+                    <th class="text-center"></th>
+                </tr>
+
+                <!-- Repeatable template row -->
+                <% for(let count = 0; count < incidentList.length; count++) { %>
+                    <tr>
+                        <td class="text-center"><%= incidentList[count].recordNumber %></td>
+                        <td class="text-center"><%= incidentList[count].description %></td>
+                        <td class="text-center"><%= incidentList[count].priority %></td>
+                        <td class="text-center"><%= incidentList[count].customerInfo %></td>
+                        <td class="text-center">
+                            <% if (incidentList[count].status == "Closed") { %>
+                                <select class="form-control mdb-select md-form" id="status" name="status" required disabled>
+                            <% } else { %>
+                                <select class="form-control mdb-select md-form" id="status-<%= incidentList[count]._id %>" name="status" onchange="openStatusCommentPopupAtTicket('<%= incidentList[count]._id %>')" required>
+                            <% } %>
+                                <% if (incidentList[count].status == "New") { %>
+                                <option value="New" selected>New</option>
+                                <% } else { %>
+                                <option value="New">New</option>
+                                <% } %>
+
+                                <% if (incidentList[count].status == "In Progress") { %>
+                                <option value="In Progress" selected>In Progress</option>
+                                <% } else { %>
+                                <option value="In Progress">In Progress</option>
+                                <% } %>
+
+                                <% if (incidentList[count].status == "Closed") { %>
+                                <option value="Closed" selected>Closed</option>
+                                <% } else { %>
+                                <option value="Closed" data-toggle="modal" data-target="#myModal">Closed</option>
+                                <% } %>
+                            </select>
+                            <button id="confirmToChangeStatusBtn-<%= incidentList[count]._id %>" class="btn btn-primary" style="display: none;" onclick="confirmToChangeStatus('<%= incidentList[count]._id %>')">
+                                <i class="fa fa-edit"></i> Confirm
+                            </button>
+                        </td>
+                        <td class="text-center"><%= incidentList[count].narrativeLatest %></td>
+                        <td class="text-center">
+                            <a href="/incident-list/edit/<%= incidentList[count]._id %>" class="btn btn-primary btn-sm">
+                                <i class="fas fa-pencil-alt"></i> Update
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a href="/incident-list/delete/<%= incidentList[count]._id %>" class="btn btn-danger btn-sm cancel">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                <% } %>
+            </table>
+        </div>
+
+        <%- include ../partials/modal_view.ejs %>
+    </div>
+  </main>
+
+
+<%- include ../partials/footer.ejs %>
+

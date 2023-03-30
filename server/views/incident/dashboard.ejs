@@ -1,0 +1,38 @@
+
+
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/nav_bar.ejs %>
+
+<main class="jumbotron text-center titleMain">
+    <h1 class="jumbotron-heading display-3"><%= title %></h1><br>
+</main>
+
+<% if (incidentList.length > 0) { %>
+<div class="container">
+    <div class="card-columns">
+        <% for(let count = 0; count < incidentList.length; count++) { %>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"><%= incidentList[count].description %></h5>
+                <p class="card-text">Problem Description</p>
+                <p class="card-text"><small class="text-muted"><%- htmlDisplay(incidentList[count].narrative) %></small></p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <p><a class="btn btn-sm btn-outline-primary" href="/incident-list/edit/<%= incidentList[count]._id %>" role="button">Update</a></p>
+                        <p><a href="/incident-list/dashboard/delete/<%= incidentList[count]._id %>" class="btn btn-outline-danger btn-sm cancel" style="margin-left: 5px">Delete</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+        <% } else { %>
+        <br>
+        <div class="container">
+            <h5 class="display-4" style="color: white">You have no incident to display</h5>
+        </div>
+        <% } %>
+    </div>
+</div>
+
+<%- include ../partials/footer.ejs %>

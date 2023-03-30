@@ -1,0 +1,130 @@
+
+
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/nav_bar.ejs %>
+
+<!-- Content for the Edit page -->
+<main class="jumbotron text-center titleMain">
+    <h1 class="jumbotron-heading display-3"><%= title %></h1>
+</main>
+<div class="modal-dialog text-center">
+    <div class="col main-section">
+        <div class="modal-content model-content-update">
+            <div class="col-12 user-img">
+                <img src="/assets/images/update.png">
+            </div>
+            <div class="col-12 form-input">
+                <form method="POST" autocomplete="off">
+                    <div class="form-group fonticonUpdate">
+                        <label for="customerInfo" class="labelList">Record Number</label>
+                        <input type="text" class="form-control" id="recordNumber" name="recordNumber"
+                            value="<%= incident.recordNumber %>" readonly><i class="fas fa-list-ol fa-lg"></i>
+                    </div>
+                    <div class="form-group fonticonUpdate">
+                        <label for="priority" class="labelList">Incident Priority</label>
+                        <i class="fas fa-user-clock fa-lg"></i>
+                        <% if (incident.status == "Closed") { %>
+                            <select class="form-control mdb-select md-form selectList" id="priority" name="priority" required disabled>
+                        <% } else { %>
+                            <select class="form-control mdb-select md-form selectList" id="priority" name="priority" required>
+                        <% } %>
+                            <% if (incident.priority == "Low") { %>
+                            <option value="Low" selected>Low</option>
+                            <% } else { %>
+                            <option value="Low">Low</option>
+                            <% } %>
+                            <% if (incident.priority == "Normal") { %>
+                            <option value="Normal" selected>Normal</option>
+                            <% } else { %>
+                            <option value="Normal">Normal</option>
+                            <% } %>
+                            <% if (incident.priority == "High") { %>
+                            <option value="High" selected>High</option>
+                            <% } else { %>
+                            <option value="High">High</option>
+                            <% } %>
+                          </select>
+                    </div>
+                    <div class="form-group fonticonUpdate">
+                        <label for="customerInfo" class="labelList">Incident Description</label>
+                        <i class="fas fa-clipboard-list fa-lg"></i>
+                        <% if (incident.status == "Closed") { %>
+                        <input type="text" class="form-control" id="description"
+                            placeholder="Enter incident description" name="description"
+                            value="<%= incident.description %>" required readonly>
+                        <% } else { %>
+                        <input type="text" class="form-control" id="description"
+                            placeholder="Enter incident description" name="description"
+                            value="<%= incident.description %>" required>
+                        <% } %>
+                    </div>
+                    <div class="form-group fonticonUpdate">
+                        <label for="customerInfo" class="labelList">Incident Status</label>
+                        <i class="fas fa-tasks fa-lg"></i>
+                        <% if (incident.status == "Closed") { %>
+                        <select class="form-control mdb-select md-form selectList" id="status" name="status" required disabled>
+                            <% } else { %>
+                            <select class="form-control mdb-select md-form selectList" id="status" name="status"
+                                onchange="openStatusCommentPopup()" required>
+                                <% } %>
+                                <% if (incident.status == "New") { %>
+                                <option value="New" selected>New</option>
+                                <% } else { %>
+                                <option value="New">New</option>
+                                <% } %>
+
+                                <% if (incident.status == "In Progress") { %>
+                                <option value="In Progress" selected>In Progress</option>
+                                <% } else { %>
+                                <option value="In Progress">In Progress</option>
+                                <% } %>
+
+                                <% if (incident.status == "Closed") { %>
+                                <option value="Closed" selected>Closed</option>
+                                <% } else { %>
+                                <option value="Closed" data-toggle="modal" data-target="#myModal">Closed</option>
+                                <% } %>
+                            </select>
+                    </div>
+                    <div class="form-group fonticonUpdate">
+                        <label for="customerInfo" class="labelList">Customer Information</label>
+                        <i class="fa fa-user fa-lg"></i>
+                        <% if (incident.status == "Closed") { %>
+                            <input type="text" class="form-control" id="customerInfo" placeholder="Enter customer infomation"
+                        name="customerInfo" value="<%= incident.customerInfo %>" required readonly>
+                        <% } else { %>
+                            <input type="text" class="form-control" id="customerInfo" placeholder="Enter customer infomation"
+                        name="customerInfo" value="<%= incident.customerInfo %>" required>
+                        <% } %>
+                    </div>
+                    <div class="form-group fonticonUpdate">
+                        <label for="narrative" class="labelList">Incident Narrative</label>
+                        <% if (incident.narrative == "undefined") { %>
+                        <textarea class="form-control" id="narrative" name="narrative" rows="5" readonly></textarea>
+                        <% } else { %>
+                        <textarea class="form-control" id="narrative" name="narrative" rows="5"
+                            readonly><%= incident.narrative %></textarea>
+                        <% } %>
+                    </div>
+                    <fieldset class="float-right">
+                        <% if (incident.status == "Closed") { %>
+                        <button class="btn btn-primary loginButton" disabled>
+                            <% } else { %>
+                            <button class="btn btn-primary loginButton">
+                                <% } %>
+                                <i class="fa fa-edit"></i> Update
+                            </button>
+                            <a href="/incident-list" class="btn btn-warning cancelButton">
+                                <i class="fa fa-undo"></i> Cancel
+                            </a>
+                    </fieldset>
+                    <%- include ../partials/modal_view.ejs %>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<%- include ../partials/footer.ejs %>
